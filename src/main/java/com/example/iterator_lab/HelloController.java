@@ -27,6 +27,12 @@ public class HelloController {
         screen.setImage((Image)iter.next());
         //EvHandler();
     }
+    @FXML
+    protected void prevButtonClick()
+    {
+        screen.setImage((Image)iter.preview());
+        //EvHandler();
+    }
     public void EvHandler()
     {
         time.setCycleCount(Timeline.INDEFINITE); //кол-во повторов

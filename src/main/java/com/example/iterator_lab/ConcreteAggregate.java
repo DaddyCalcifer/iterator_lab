@@ -32,6 +32,11 @@ public class ConcreteAggregate implements
             return
                     !getImage(current+i).isError();
         }
+        public boolean hasPrev(int i) {
+            //System.out.println(getImage(current+1).isError());
+            return
+                    !getImage(current-i).isError();
+        }
         @Override
         public Object next() {
             if(this.hasNext(1)) {
@@ -43,7 +48,11 @@ public class ConcreteAggregate implements
 
         @Override
         public Object preview() {
-            return null;
+            if(this.hasPrev(1)) {
+                return getImage(--current);
+            }
+            current = 8;
+            return getImage(8);
         }
     }
 }

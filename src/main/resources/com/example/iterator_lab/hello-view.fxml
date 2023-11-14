@@ -5,12 +5,15 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.iterator_lab.HelloController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.iterator_lab.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-
-    <Label fx:id="welcomeText" />
    <ImageView fx:id="screen" fitHeight="154.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-    <Button onAction="#onHelloButtonClick" text="Hello!" />
+   <HBox prefHeight="19.0" prefWidth="200.0">
+      <children>
+         <Button layoutX="10.0" layoutY="10.0" onAction="#prevButtonClick" prefHeight="26.0" prefWidth="31.0" text="&lt;" />
+          <Button onAction="#onHelloButtonClick" prefHeight="26.0" prefWidth="34.0" text="&gt;" />
+      </children>
+   </HBox>
 </VBox>
