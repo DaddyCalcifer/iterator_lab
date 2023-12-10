@@ -1,45 +1,52 @@
 package com.example.iterator_lab;
-
 import javafx.scene.image.Image;
 
+import java.io.File;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConcreteAggregate implements
         Aggregate {
-    private final String filetopic;
     private Image bi;
     @Override
     public Iterator getIterator() {
         return new ImageIterator();
     }
-    public ConcreteAggregate(String filetopic)
-    {
-        this.filetopic = filetopic;
-    }
     private class ImageIterator implements
             Iterator {
         private int current = 1;
+        public List<File> images;
+        public  ImageIterator()
+        {
+            images = new ArrayList<File>();
+
+        }
         private Image getImage(int iterator){
-            String filename =
-                    Paths.get("src/main/resources/Images/"+ filetopic
-                            + iterator +".jpg").toUri().toString();
-            //System.out.println(filename);
-            return new Image(filename);
+            File dir = new File("src/main/resources/Images");
+            for(File file : dir.listFiles())
+            {
+                if(file.isFile())
+                    if(file.getPath().endsWith(".jpg") ||
+                            file.getPath().endsWith(".jpeg") ||
+                            file.getPath().endsWith(".png"))
+                        images.add(file);
+            }
+            return new Image(images.get(iterator).toURI().toString());
         }
         @Override
-        public boolean hasNext(int i) {
-            //System.out.println(getImage(current+1).isError());
+        public boolean hasNext() {
             return
-                    !getImage(current+i).isError();
+                    !getImage(current+1).isError();
         }
-        public boolean hasPrev(int i) {
-            //System.out.println(getImage(current+1).isError());
+        @Override
+        public boolean hasPreview() {
             return
-                    !getImage(current-i).isError();
+                    !getImage(current-1).isError();
         }
         @Override
         public Object next() {
-            if(this.hasNext(1)) {
+            if(this.hasNext()) {
                 return getImage(++current);
             }
             current = 1;
@@ -48,7 +55,7 @@ public class ConcreteAggregate implements
 
         @Override
         public Object preview() {
-            if(this.hasPrev(1)) {
+            if(this.hasPreview()) {
                 return getImage(--current);
             }
             current = 8;

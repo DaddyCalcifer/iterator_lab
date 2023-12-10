@@ -9,11 +9,19 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <ImageView fx:id="screen" fitHeight="154.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+   <ImageView fx:id="screen" fitHeight="264.0" fitWidth="472.0" pickOnBounds="true" preserveRatio="true">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <viewport>
+         <Rectangle2D />
+      </viewport></ImageView>
    <HBox prefHeight="19.0" prefWidth="200.0">
       <children>
          <Button layoutX="10.0" layoutY="10.0" onAction="#prevButtonClick" prefHeight="26.0" prefWidth="31.0" text="&lt;" />
           <Button onAction="#onHelloButtonClick" prefHeight="26.0" prefWidth="34.0" text="&gt;" />
+         <Button layoutX="41.0" layoutY="10.0" onAction="#startShow" prefHeight="26.0" prefWidth="34.0" text="▶" />
+         <Button layoutX="75.0" layoutY="10.0" onAction="#endShow" prefHeight="26.0" prefWidth="34.0" text="■" />
       </children>
    </HBox>
 </VBox>
